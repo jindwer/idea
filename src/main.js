@@ -2,11 +2,14 @@ import './less/common.less'
 import Vue from 'vue'
 import router from './router/index'
 import App from './App.vue'
+import Http from './http'
+import Ui from './ui'
 
-import { Button } from 'element-ui'
-// import 'element-ui/lib/theme-default/index.css'
 
-Vue.component(Button.name, Button)
+//引入自定义ajax插件
+Vue.use(Http)
+//引入UI组件
+Vue.use(Ui)
 
 new Vue({
   el: '#app',
