@@ -6,7 +6,7 @@
           router-link(:to="{ name: 'login', params: {} }")
             i 登录
         li
-          router-link(:to="{ name: 'register', params: {} }")
+          router-link(:to="{ name: 'signup', params: {} }")
             i 注册
         li
           router-link(:to="{ name: 'channel', params: {} }")
