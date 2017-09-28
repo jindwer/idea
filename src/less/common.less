@@ -1,12 +1,36 @@
+html,body,div,span,p,h1,h2,h3,h4,h5,h6,i,label,input,fieldset,button,img,a,i{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
 html{
   font-size: 16px;
   body{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    background-color: #C0CCDA;
     a{
       text-decoration: none;
       color: #000;
+    }
+    .pull-left{
+      float: left;
+    }
+    .pull-right{
+      float: right;
+    }
+    .clearfix{
+      &::before{
+        content: "";
+        display: block;
+        clear: both;
+        height: 0;
+        line-height: 0;
+        font-size: 0;
+      }
     }
   }
 }
