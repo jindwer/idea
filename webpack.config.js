@@ -58,7 +58,8 @@ module.exports = {
   plugins: [new BundleAnalyzerPlugin()],
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    port: 5000
   },
   performance: {
     hints: false
