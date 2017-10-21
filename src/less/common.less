@@ -1,3 +1,9 @@
+@blue: #20A0FF;
+@sim-blue: #71b8ee;
+@mid-blue: #189cff;
+@deep-blue: #1D8CE0;
+@gray: #999;
+@white: #fff;
 html,body,div,span,p,h1,h2,h3,h4,h5,h6,i,label,input,fieldset,button,img,a,i,header,section,footer,aside,ul,li{
   margin: 0;
   padding: 0;
@@ -41,8 +47,36 @@ html{
   font-weight: bold;
 }
 .text-blue{
-  color: #20A0FF;
+  color: @blue;
 }
 .text-gray{
   color: #999;
+}
+.btn{
+  outline: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: 1px solid #fff;
+  padding: 8px 15px;
+  cursor: pointer;
+  &.btn-blue{
+    background-color: @blue;
+    border-color: @blue;
+    color: @white;
+    &:hover{
+      background-color: @deep-blue;
+      border-color: @deep-blue;
+    }
+    &:active{
+      background-color: @mid-blue;
+      border-color: @mid-blue;
+    }
+    &.disabled{
+      background-color: @sim-blue;
+      border-color: @sim-blue;
+    }
+  }
+}
+.shadow-box{
+  box-shadow: 0 0 5px #999;
 }

@@ -1,27 +1,31 @@
 <template lang="jade">
   .item
-    h3.text-blue 最良心的软件可以良心到什么程度？
+    router-link(:to="{ name: 'detail', params: {id: item.id} }")
+      h3.text-blue(v-text="item.title")
     .info
       .base
-        span.like 788
-        span.pv.text-blue 1056
+        span.like(v-text="item.focus")
+        span.pv.text-blue(v-text="item.vp")
       .content
         .author
-          span.text-bold 吉娃娃
-          span.address.text-gray.before 兰州大学
-          span.sign.text-gray.before 吾尝终日而思矣，不如须臾之所学
+          router-link(:to="{ name: 'people', params: {id: item.author.id} }")
+            span.text-bold(v-text="item.author.name")
+          span.address.text-gray.before(v-text="item.author.col")
+          span.sign.text-gray.before(v-text="item.author.des")
         .des
           .summary.clearfix
-            img(src="https://pic3.zhimg.com/v2-6c540ff064410555aa3683bf9ded53a6_200x112.jpg")
-            p 《清明上河图密码》 看书单狗推荐买的，一开始抱着试试的态度，以为又是现在流行的“密码”系列。 而且拿到书的时候……真的特别大。一种网络小说的装订的迷之审美的土气。 （拿到的时候真的迷之土气……） 但是翻开之后真的被震惊了，作者以《清明上河图》...
-              a.text-blue(href="javascript:void(0);") 查看详情
+            .img(v-if="item.cover")
+              img(:src="item.cover")
+            p(v-text="item.content + ' ...'")
+            router-link.text-blue(:to="{ name: 'detail', params: {id: item.id} }") 查看详情
         .feed
           a(href="javascript:void(0);") 收藏
 </template>
 
 <script>
 export default {
-  name: 'item'
+  name: 'item',
+  props: ['item']
 }
 </script>
 
@@ -31,7 +35,11 @@ export default {
     padding: 5px 0;
     border-bottom: 1px solid #eee;
     h3{
+      display: inline;
       font-size: 0.9rem;
+      &:hover{
+        text-decoration: underline;
+      }
     }
     .info{
       display: flex;
@@ -75,7 +83,7 @@ export default {
         padding: 3px 4px;
         .summary{
           font-size: 0.82rem;
-          img{
+          .img{
             border-radius: 5px;
             overflow: hidden;
             float: left;
@@ -83,6 +91,9 @@ export default {
             height: 112px;
             margin-right: 8px;
             margin-bottom: 8px;
+          }
+          p{
+            display: inline;
           }
           a{
             display: inline-block;
