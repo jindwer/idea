@@ -12,11 +12,16 @@
               button.login-btn() 登录
             router-link(:to="{ name: 'signup', params: {}}")
               button.sign-btn() 注册
+    Ifixmenu
 </template>
 
 <script>
+import Ifixmenu from './Ifixmenu.vue'
 export default {
-  name: 'header'
+  name: 'header',
+  components: {
+    Ifixmenu
+  }
 }
 </script>
 
@@ -33,6 +38,7 @@ export default {
     overflow: hidden;
     box-shadow: 0 0 5px #000;
     position: fixed;
+    z-index: 999;
     top: 0;
     .logo{
       width: 60%;

@@ -28,6 +28,7 @@
 
 <script>
 import '../less/loginsign.less'
+import Vue from 'vue'
 export default {
   name: 'login',
   data () {
@@ -40,7 +41,14 @@ export default {
   methods: {
     //登录
     login(){
-      console.log(this.$http.get());
+      // console.log(this.$http.get());
+      // console.log(this.$parent);
+      // console.log(this.$children);
+      // console.log(this.$root.$data);
+      // console.log(this.$options);
+      // console.log(this.$createElement);
+      // console.log(Vue.parse);
+      // console.log(Vue.compile);
       // this.status = 1;
       // if(!this.user){
       //   this.$refs.user.focus();
