@@ -3,7 +3,7 @@
     .center(@click="active = !active")
       span
     .menu(v-for="(menu, index) in menus", :key="index", :style="active &&　menuPosition(index)")
-      router-link(:to="{ name: menu.link}") {{menu.text}}
+      router-link(:to="{ name: menu.link, query: menu.query}") {{menu.text}}
 </template>
 
 <script>
@@ -15,8 +15,9 @@ export default {
     return {
       active: false,
       menus: [
-        { text: '主页', link: 'index'},
-        { text: '发布', link: 'publish'}
+        { text: '主页', link: 'index', query: {id:1,name:'qqq'}},
+        { text: '发布', link: 'publish', query: {id:1,name:'qqq'}},
+        { text: '发布', link: 'publish', query: {id:2,name:'www'}}
       ]
     }
   },
@@ -41,6 +42,11 @@ export default {
         top: Math.cos(d) * (r - 25) + 'px',
         left: Math.sin(d) * (r - 25) + 'px'
       }
+    }
+  },
+  watch: {
+    '$route'(){
+      this.active = false
     }
   }
 }

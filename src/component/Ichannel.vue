@@ -2,12 +2,12 @@
   aside.channel
     .channel-list
       ul.clearfix
-        router-link(:to="{ name: 'channel', params: {}}")
+        router-link(:to="{ name: 'channel', params: {id: 'wenyi'}}")
           li
             img(src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1276597933,211791234&fm=27&gp=0.jpg")
             span 文艺范
             i 203
-        router-link(:to="{ name: 'channel', params: {}}")
+        router-link(:to="{ name: 'channel', params: {id: 'dongman'}}")
           li
             img(src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=262587227,3901505707&fm=27&gp=0.jpg")
             span 动漫迷

@@ -1,7 +1,9 @@
 <template lang="jade">
   #publish
     .editor
-      input.title.shadow-box(placeholder="标题")
+      input.title.shadow-box(placeholder="标题" v-model.trim="title")
+      .class(:class="{'warning': typeEmpty}")
+        span(v-for="(type, index) in allType", v-text="type.name", :key="type.id", @click="toggleClass(type.id)", :class="{'active': selectedType.indexOf(type.id)>-1 }")
       Editor.shadow-box(@change="change", :content="content", :height="400", :auto-height="true", :z-index="2", :class="{'active': contentFocus, 'barFixed': barFixed}")
       button.shadow-box.btn.btn-blue.publish-btn(@click="publish") 提交
 </template>
@@ -11,7 +13,9 @@ import Iheader from '../component/Iheader.vue'
 import VueHtml5Editor from 'vue-html5-editor'
 import config from '../pluginsConfig/editor.config.js'
 const Editor = new VueHtml5Editor(config)
+
 let editorContent = null, toolBar = null
+
 export default {
   name: 'publish',
   components: {
@@ -20,9 +24,16 @@ export default {
   },
   data () {
     return {
-      content: 'ASDDSFAS',
+      title: '',
+      content: '',
+      typeEmpty: false,
       contentFocus: false,
-      barFixed: false
+      barFixed: false,
+      allType: [
+        {id:'qwe_123',name:'动漫迷'},
+        {id:'qwe_456',name:'文艺范'}
+      ],
+      selectedType: []
     }
   },
   mounted () {
@@ -40,10 +51,27 @@ export default {
   },
   methods: {
     change (content) {
-      this.content = content;
+      this.content = content
     },
     publish () {
-
+      let timer
+      if(!this.title){
+        this.$el.querySelector('.title').focus()
+      }else if(!this.selectedType.length){
+        this.typeEmpty = true
+        clearTimeout(timer)
+        timer = setTimeout(()=>{
+          this.typeEmpty = false
+        },1500)
+      }else if(!this.content){
+        editorContent.focus()
+      }else{
+        //提交
+      }
+    },
+    toggleClass (id) {
+      let index = this.selectedType.indexOf(id)
+      index > -1 ? this.selectedType.splice(index,1) : this.selectedType.push(id)
     }
   }
 }
@@ -84,12 +112,50 @@ export default {
       .icon{
         font-size: 1rem;
       }
+      .class{
+        margin-bottom: 10px;
+        padding: 5px 0px;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        border-radius: 3px;
+        transition: all .3s linear;
+        &.warning{
+          animation: blink .5s ease-in 0s 3;
+        }
+        span{
+          padding: 1px 5px;
+          color: #20A0FF;
+          border-radius: 3px;
+          background-color: #fff;
+          margin-right: 10px;
+          font-size: .9rem;
+          box-shadow: 0 0 5px #999;
+          transition: all .3s linear;
+          cursor: pointer;
+          &.active{
+            background-color: #20A0FF;
+            color: #fff;
+          }
+        }
+      }
       .publish-btn{
         font-size: 1rem;
         display: block;
         margin: 15px auto;
         padding: 5px 100px;
       }
+    }
+  }
+  @keyframes blink {
+    0%{
+      background-color: transparent;
+    }
+    50%{
+      background-color: #20A0FF;
+    }
+    100%{
+      background-color: transparent;
     }
   }
 </style>
