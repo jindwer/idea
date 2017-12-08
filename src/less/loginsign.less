@@ -1,28 +1,25 @@
 #action{
   width: 100%;
-  >.el-row{
-    height: 100vh;
-    position: relative;
-  }
+  height: 100vh;
+  position: relative;
   .action-pic{
     position: absolute;
     z-index: 1;
     width: 100%;
     height: 100%;
-    .el-row{
+    .pic{
+      width:100%;
+      background-image: linear-gradient(180deg,#0d1a44 13%,#3c4f91 56%,#5fc1e4);
       height: 100%;
-      .pic{
-        background-image: linear-gradient(180deg,#0d1a44 13%,#3c4f91 56%,#5fc1e4);
-        height: 100%;
-        overflow-y: hidden;
-        img{
-          width: 100%;
-          height: auto;
+      overflow-y: hidden;
+      img{
+        width: 100%;
+        height: auto;
         }
       }
-    }
   }
   .field-container{
+    .loginAndUp;
     position: absolute;
     z-index: 2;
     top: 50%;
@@ -95,5 +92,16 @@
         margin-right: 10px;
       }
     }
+  }
+}
+.loginAndUp(){
+  @media screen and (min-width: 970px){
+    width: 30%;
+    margin-left: 60%;
+  }
+  @media screen and (max-width: 960px){
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%
   }
 }

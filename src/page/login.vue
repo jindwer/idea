@@ -1,11 +1,9 @@
 <template lang="jade">
   #action
-    el-row
       .action-pic
-        el-row
-          el-col.pic(:xs="{span:24}", :sm="{span:24}", :md="{span:24}", :lg="{span:24}")
+        .pic(:xs="{span:24}", :sm="{span:24}", :md="{span:24}", :lg="{span:24}")
             //img(src="" alt="")
-      el-col.field-container(:xs="{span:24}", :sm="{span:12, offset:6}", :md="{span:8, offset:14}", :lg="{span:7, offset:15}")
+      .field-container
         h2 登录
         fieldset
           .input-box
