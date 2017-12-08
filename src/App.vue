@@ -5,7 +5,12 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  watch: {
+    '$route'(){
+      console.log('最外层App.vue对$route的监听');
+    }
+  }
 }
 </script>
 

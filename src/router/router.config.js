@@ -20,8 +20,8 @@ export default {
       children: [
         //主页
         {path: '/', name: 'index', component: Index, meta: { requiresAuth: false }},
-        //频道页
-        {path: '/channel', name: 'channel', component: Channel, meta: { requiresAuth: false }},
+        //子频道页
+        {path: '/channel/:id', name: 'channel', component: Channel, meta: { requiresAuth: false }},
         //详情页面
         {path: '/detail/:id', name: 'detail', component: Detail, meta: { requiresAuth: false }},
         //发布页
